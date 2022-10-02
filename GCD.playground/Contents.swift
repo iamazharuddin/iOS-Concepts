@@ -6,9 +6,9 @@ func doLongAsyncTaskInSerialQueue() {
         serialQueue.async {
 
             if Thread.isMainThread{
-                print("task running in main thread")
+                print("task \(i) running in main thread")
             }else{
-                print("task running in background thread")
+                print("task \(i) running in background thread")
             }
             let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
             let _ = try! Data(contentsOf: imgURL)
@@ -26,9 +26,9 @@ func doLongSyncTaskInSerialQueue() {
     for i in 1...5 {
         serialQueue.sync {
             if Thread.isMainThread{
-                print("task running in main thread")
+                print("task \(i) running in main thread")
             }else{
-                print("task running in background thread")
+                print("task \(i) running in background thread")
             }
             let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
             let _ = try! Data(contentsOf: imgURL)
@@ -44,13 +44,21 @@ func doLongASyncTaskInConcurrentQueue() {
     for i in 1...5 {
         concurrentQueue.async {
             if Thread.isMainThread{
-                print("task running in main thread")
+                print("task \(i) running in main thread")
             }else{
-                print("task running in background thread")
+                print("task \(i) running in background thread")
             }
             let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
-            let _ = try! Data(contentsOf: imgURL)
-            print("\(i) completed downloading")
+            
+            DispatchQueue.global(qos: .utility).async {
+                let _ = try! Data(contentsOf: imgURL)
+                
+                DispatchQueue.main.async {
+                    print("\(i) completed downloading")
+                }
+            }
+            
+            
         }
         print("\(i) executing")
     }
@@ -63,9 +71,9 @@ func doLongSyncTaskInConcurrentQueue() {
     for i in 1...5 {
         concurrentQueue.sync {
             if Thread.isMainThread{
-                print("task running in main thread")
+                print("task \(i) running in main thread")
             }else{
-                print("task running in background thread")
+                print("task \(i) running in background thread")
             }
             let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
             let _ = try! Data(contentsOf: imgURL)
