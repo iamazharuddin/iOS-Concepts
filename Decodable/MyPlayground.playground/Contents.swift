@@ -1,9 +1,6 @@
 import UIKit
 import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
-
-/*Thank you for downloading the code, I hope you enjoyed the video. Please feel free to ask questions and if you are new to the channel then please subscribe ~Codecat15 */
-
 struct EmployeeResponse : Decodable
 {
     let employeeId, depid: Int
