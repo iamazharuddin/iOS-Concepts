@@ -1,10 +1,6 @@
 import UIKit
 import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
-
-/**Thank you for downloading the source code, I hope you liked the video. If you have any questions on this topic feel free to ask never hesitate we all are learners in this small world.
- Do share this video with your iOS group and if you are new to the channel then please do subscribe. ~codecat15*/
-
 //Api documentation link: https://api-dev-scus-demo.azurewebsites.net/swagger/index.html
 
 struct Endpoint
@@ -66,4 +62,4 @@ struct User
 }
 
 let objUser = User()
-objUser.GetUserFromServer()
+objUser.registerUser()
