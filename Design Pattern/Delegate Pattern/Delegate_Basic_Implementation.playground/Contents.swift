@@ -1,4 +1,5 @@
 import UIKit
+import SwiftUI
 import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
 
@@ -40,8 +41,8 @@ class Manager : AdditionResultDelegate
     }
 }
 
-let objManager = Manager(_developer: Developer())
-objManager.addTwoNumber(x: 10, y: 10)
+//let objManager = Manager(_developer: Developer())
+//objManager.addTwoNumber(x: 10, y: 10)
 
 
 
@@ -84,6 +85,6 @@ class ProfileImageViewer : ImageDownloadDelegate //Just like the manager class
     }
 }
 
-let objProfileImageViewer = ProfileImageViewer(_imageDownloader: ImageDownloader())
+//let objProfileImageViewer = ProfileImageViewer(_imageDownloader: ImageDownloader())
 
 

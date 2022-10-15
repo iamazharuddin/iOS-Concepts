@@ -22,9 +22,11 @@ class Manager
 
     func addTwoNumber(x: Int, y: Int)
     {
-        developer?.didAddTwoNumbers = {additionResult in debugPrint("addition result = \(additionResult)")}
-
+//        developer?.didAddTwoNumbers = {additionResult in debugPrint("addition result = \(additionResult)")}
+       
+        developer?.didAddTwoNumbers = {result in   debugPrint("addition result = \(result)")   }
         developer?.developerWillAddTwoNumber(a: x, b: y)
+        
     }
 }
 
@@ -131,5 +133,6 @@ class ProfileClosureImageViewer //Just like the manager class
     }
 }
 
-let objProfileClosureImageViewer = ProfileClosureImageViewer(_imageClosureDownloader: ImageClosureDownloader())
+//let objProfileClosureImageViewer = ProfileClosureImageViewer(_imageClosureDownloader: ImageClosureDownloader())
+
 

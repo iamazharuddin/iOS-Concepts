@@ -5,7 +5,7 @@ import UIKit
 class Person
 {
     var name: String
-    weak var job: Job?
+    var job: Job?
 
     init(_name: String) {
         debugPrint("init method of Person called")
@@ -35,7 +35,7 @@ class Person
 class Job
 {
     var jobDescription: String
-    weak var person: Person?
+    var person: Person?
 
     init(_jobDescription: String) {
         debugPrint("init method of Job called")

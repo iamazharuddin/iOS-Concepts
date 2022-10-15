@@ -1,19 +1,4 @@
 import UIKit
-
-/**
-Thank you for taking time and watching the vide, if you have questions then please feel free to ask them via comments or via email.
-
- If you are new to the channel, I request you to please subscribe to the channel as the more people subscribe the more it motivates me to bring quality content for free.
-
- Do share the channel with your iOS group and do let me know what I can do better to improve my content or any video requests you can think of
-
- Thank you once again, have a nice day
-
- Ravi a.k.a codecat15
-
- */
-
-
 // Model
 struct Report {
 

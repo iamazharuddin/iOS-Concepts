@@ -8,16 +8,6 @@
 import Foundation
 import UIKit
 
-/**
-
- Thank you for downloading the code, I hope the session was helpful and if you have any questions please feel free to ask them.
-
- If you are new to the channel subscribe for more Swift programming videos and do share the same with your iOS group on WhatsApp, LinkedIn or Slack.
-
- Regards,
- Ravi (CodeCat15)
-
- */
 
 
 class MainCoordinator : Coordinator {

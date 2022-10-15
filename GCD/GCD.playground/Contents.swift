@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 func doLongAsyncTaskInSerialQueue() {
    let serialQueue = DispatchQueue(label: "com.queue.Serial")
@@ -10,15 +11,18 @@ func doLongAsyncTaskInSerialQueue() {
             }else{
                 print("task \(i) running in background thread")
             }
-            let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
-            let _ = try! Data(contentsOf: imgURL)
+//            let imgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/0/07/Huge_ball_at_Vilnius_center.jpg")!
+//            let _ = try! Data(contentsOf: imgURL)
+            
+            Thread.sleep(forTimeInterval: 2)
+            
             print("\(i) completed downloading")
         }
     }
 }
 
 
-// doLongAsyncTaskInSerialQueue()
+ doLongAsyncTaskInSerialQueue()
 
 
 func doLongSyncTaskInSerialQueue() {
@@ -74,7 +78,7 @@ func doLongASyncTaskInConcurrentQueue() {
 //    }
 }
 
-doLongASyncTaskInConcurrentQueue()
+//doLongASyncTaskInConcurrentQueue()
 
 func doLongSyncTaskInConcurrentQueue() {
   let concurrentQueue = DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent)
