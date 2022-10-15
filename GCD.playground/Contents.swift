@@ -1,7 +1,6 @@
 import Foundation
 let semaphore = DispatchSemaphore(value: 1)
 func asyncTask(_ i : Int){
-     semaphore.wait()
      if Thread.isMainThread{
         print("Task \(i) Executing in main thread")
      }else{
@@ -9,7 +8,6 @@ func asyncTask(_ i : Int){
      }
      Thread.sleep(forTimeInterval: 2)
      print("Task \(i) finished")
-     semaphore.signal()
 }
 
 
@@ -21,4 +19,63 @@ func executeMultipleAsyncTask(){
         }
     }
 }
-executeMultipleAsyncTask()
+//executeMultipleAsyncTask()
+func executeMultipleWorkItem(){
+    let queue = DispatchQueue(label: "com.azhar.com", attributes: .concurrent)
+    for i in 1...5{
+        let workItem = DispatchWorkItem{
+            asyncTask(i)
+        }
+        if i == 2{
+            workItem.cancel()
+        }
+        workItem.notify(queue: .main) {
+            print("Task \(i) finished")
+        }
+        queue.async(execute: workItem)
+    }
+}
+
+
+//executeMultipleWorkItem()
+
+
+
+let queue = DispatchQueue(label: "com.azhar.com", attributes: .concurrent)
+queue.sync(flags:.barrier) {
+    
+    if Thread.isMainThread{
+       print("Executing in main thread")
+    }else{
+        print("Executing in background thread")
+    }
+    
+    var str = ""
+    Thread.sleep(forTimeInterval: 2)
+    for i in 1...5{
+      str = str + " " + String(i)
+    }
+    print(str)
+}
+
+queue.async {
+    
+    if Thread.isMainThread{
+       print("Executing in main thread")
+    }else{
+        print("Executing in background thread")
+    }
+    
+    var str = ""
+    for i in stride(from: 100, to: 1, by: -10){
+      str = str + " " + String(i)
+    }
+  
+    print(str)
+}
+
+
+
+
+
+

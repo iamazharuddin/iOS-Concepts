@@ -42,7 +42,6 @@ struct User
 
         do {
             let requestBody = try JSONSerialization.data(withJSONObject: dataDictionary, options: .prettyPrinted)
-
             urlRequest.httpBody = requestBody
             urlRequest.addValue("application/json", forHTTPHeaderField: "content-type") //this line is very important as explained in the video
 

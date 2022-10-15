@@ -99,6 +99,40 @@ class C{
 }
 
 
-let a = A(b: B())
+//let a = A(b: B())
 //let c = C(b: B())
+
+
+// high level class
+class Handler{
+    private  let operation : OrderStorage
+    init(opeartion : OrderStorage){
+        self.operation = opeartion
+    }
+    
+    func saveOrder(){
+        self.operation.saveOrder()
+    }
+}
+
+// low level class
+protocol OrderStorage{
+    func saveOrder()
+}
+
+class DatabaseOperation : OrderStorage{
+    func saveOrder(){
+        debugPrint("Order saved in the data base")
+    }
+}
+
+class APIOperation : OrderStorage {
+    func saveOrder() {
+        debugPrint("Order saved on  server")
+    }
+}
+//let handelr = Handler(opeartion: APIOperation())
+//handelr.saveOrder()
+
+
 
