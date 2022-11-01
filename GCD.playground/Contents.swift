@@ -79,3 +79,30 @@ queue.async {
 
 
 
+let q = DispatchQueue.global()
+     q.sync {
+         if Thread.isMainThread{
+             print("Main thread")
+         }
+
+         print("1")
+
+         q.sync {
+             if Thread.isMainThread{
+                 print("Main thread")
+             }else{
+                 print("background thread")
+             }
+             print("2")
+             
+             q.sync {
+                 print("3")
+             }
+         }
+
+         print("4")
+     }
+
+  q.sync {
+    print("5")
+ }

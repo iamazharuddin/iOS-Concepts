@@ -4,7 +4,9 @@ import PlaygroundSupport
 PlaygroundSupport.PlaygroundPage.current.needsIndefiniteExecution = true
 
 /*
-
+ 
+Delegate
+ 
 protocol Delegate{
     func taskFinished(_ person: String)
 }
@@ -44,10 +46,48 @@ class C : Delegate{
 var objA = A(b: B())
 var objC = C(b: B())
  
+ 
+ 
+ 
+ Closure : -
+ 
+ class B {
+     var  delegate:((String) -> Void)?
+     func doSomething(_ manager:String) {
+         print("\(manager) asked B to do something")
+         delegate?("B")
+     }
+ }
+
+ class A {
+     init(b : B){
+         b.delegate = {person in
+             print("\(person) has finished the tasked succesfully")
+         }
+         b.doSomething("A")
+     }
+
+ }
+
+
+ class C {
+     init(b : B){
+         b.delegate = {person in
+             print("\(person) has finished the tasked succesfully")
+         }
+         b.doSomething("C")
+     }
+ }
+
+
+ var objA = A(b: B())
+ var objC = C(b: B())
+
+ 
 */
 
 
-class B {
+class ImageDownloader {
     var  delegate:((String) -> Void)?
     func doSomething(for manager:String) {
 //        print("\(manager) asked B to do something")
@@ -76,31 +116,25 @@ class B {
 }
 
 class A {
-    init(b : B){
+    init(b : ImageDownloader){
         b.delegate = taskFinished
         b.doSomething(for : "A")
     }
     func taskFinished(_ person:String){
-//        print("\(person) has finished the tasked succesfully for A")
         print(person)
     }
 }
 
 
-class C{
-    init(b : B){
-        b.delegate = taskFinished
-        b.doSomething(for : "C")
-    }
-    
-    func taskFinished(_ person:String){
-        print("\(person) has finished the tasked succesfully for C")
-    }
-}
 
 
 //let a = A(b: B())
 //let c = C(b: B())
+
+
+
+
+
 
 
 // high level class
