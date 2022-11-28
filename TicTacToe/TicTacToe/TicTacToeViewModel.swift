@@ -8,7 +8,7 @@ import Foundation
 
 enum Player :String{
      case a = "Azharuddin"
-     case b = "Rafiuddin"
+     case b = "Tarannum"
 }
 
 class TicTacToeViewModel : ObservableObject{
